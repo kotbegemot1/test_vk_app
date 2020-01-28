@@ -57,9 +57,11 @@ document.addEventListener("DOMContentLoaded", function(){
         $('#vk_auth').hide()
 	let tokenVK = window.document.URL.split('=')[1].split('&')[0];
 	let idVK = window.document.URL.split('=')[3];
+	localStorage.setItem('token', tokenVK);
+	localStorage.setItem('id', idVK);
 
         $.ajax ({
-              url: "https://api.vk.com/method/users.get?&user_ids=" + idVK + "&access_token=" + tokenVK + "&v=5.52",
+              url: "https://api.vk.com/method/users.get?&user_ids=" + localStorage.getItem('id') + "&access_token=" + localStorage.getItem('token') + "&v=5.52",
               method: 'GET',
               dataType: 'JSONP',
               success: function (data) {
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         function sendRequestFriends(func) {
             $.ajax ({
-                  url: "https://api.vk.com/method/friends.search?count=5&fields=photo_100,online&user_id=" + idVK + "&access_token=" + tokenVK + "&v=5.52",
+                  url: "https://api.vk.com/method/friends.search?count=5&fields=photo_100,online&user_id=" + localStorage.getItem('id') + "&access_token=" + localStorage.getItem('token') + "&v=5.52",
                   method: 'GET',
                   dataType: 'JSONP',
                   success: func
