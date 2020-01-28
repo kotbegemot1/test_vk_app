@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       const i = document.URL;
 
-      if (i.indexOf('token') > 0) {
+      if (localStorage.getItem('token')) {
         $('#vk_auth').hide()
 	let tokenVK = window.document.URL.split('=')[1].split('&')[0];
 	let idVK = window.document.URL.split('=')[3];
