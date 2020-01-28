@@ -55,10 +55,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
       if (localStorage.getItem('token')) {
         $('#vk_auth').hide()
-	let tokenVK = window.document.URL.split('=')[1].split('&')[0];
-	let idVK = window.document.URL.split('=')[3];
-	localStorage.setItem('token', tokenVK);
-	localStorage.setItem('id', idVK);
+	if (localStorage.getItem('token') == '1') {      
+		let tokenVK = window.document.URL.split('=')[1].split('&')[0];
+		let idVK = window.document.URL.split('=')[3];
+		localStorage.setItem('token', tokenVK);
+		localStorage.setItem('id', idVK);
+	}
 
         $.ajax ({
               url: "https://api.vk.com/method/users.get?&user_ids=" + localStorage.getItem('id') + "&access_token=" + localStorage.getItem('token') + "&v=5.52",
