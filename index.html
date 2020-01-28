@@ -41,8 +41,9 @@
 <body>
     <h2></h2>
 
-    <a id="vk_auth" class="btn" href="https://oauth.vk.com/authorize?client_id=7297420&display=page&redirect_uri=https://kotbegemot1.github.io/test_vk_app/&scope=friends&response_type=token&v=5.52"> Авторизироваться</a>
-    <button class="btn" id="load"> Загрузить список друзей</button>
+    // <a id="vk_auth" class="btn" href="https://oauth.vk.com/authorize?client_id=7297420&display=page&redirect_uri=https://kotbegemot1.github.io/test_vk_app/&scope=friends&response_type=token&v=5.52"> Авторизироваться</a>
+    <button id="vk_auth">Авторизироваться</button>
+	<button class="btn" id="load"> Загрузить список друзей</button>
 
     <ul></ul>
 
@@ -116,6 +117,22 @@ document.addEventListener("DOMContentLoaded", function(){
         $('#load').hide();
         $('h2').html('Пожалуйста авторизируйтесь!')
         console.log('notin');
+	        $('#vk_auth').on('click', loadToken);
+
+        function sendRequestAuth(func) {
+            $.ajax ({
+                  url: "https://oauth.vk.com/authorize?client_id=7297420&display=page&redirect_uri=https://kotbegemot1.github.io/test_vk_app/&scope=friends&response_type=token&v=5.52",
+                  method: 'GET',
+                  dataType: 'JSONP',
+                  success: func
+              });
+            }
+
+            function loadToken() {
+              sendRequestAuth(function (data){
+                console.log(data);
+              });
+            }
       }
 });
 </script>
