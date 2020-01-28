@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	let idVK = window.document.URL.split('=')[3];
 
         $.ajax ({
-              url: 'https://api.vk.com/method/users.get?&user_ids=" + idVK + "&access_token=" + tokenVK + "&v=5.52',
+              url: "https://api.vk.com/method/users.get?&user_ids=" + idVK + "&access_token=" + tokenVK + "&v=5.52",
               method: 'GET',
               dataType: 'JSONP',
               success: function (data) {
