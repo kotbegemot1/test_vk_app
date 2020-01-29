@@ -41,9 +41,10 @@
 <body>
     <h2></h2>
 
-    <a id="vk_auth" class="btn" href="https://oauth.vk.com/authorize?client_id=7297420&display=page&redirect_uri=https://kotbegemot1.github.io/test_vk_app/&scope=friends&response_type=token&v=5.52"> Авторизироваться</a>
-    <button class="btn" id="load"> Загрузить список друзей</button>
-    <button class="btn" id="back"> Перейти к авторизации</button>
+    
+    <button class="btn" id="vk_auth"> Авторизоваться </button>
+    <button class="btn" id="load"> Загрузить список друзей </button>
+    <button class="btn" id="back"> Перейти к авторизации </button>
 
     <ul></ul>
 
@@ -122,8 +123,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
       } else {
         $('#load').hide();
-        $('h2').html('Пожалуйста авторизируйтесь!')
-	localStorage.setItem('token', '1');
+        $('h2').html('Пожалуйста авторизируйтесь!');
+	
+	      
+        $('#vk_auth').on('click', goAuth);
+        function goAuth() {
+	    localStorage.setItem('token', '1');
+            document.location.href = "https://oauth.vk.com/authorize?client_id=7297420&display=page&redirect_uri=https://kotbegemot1.github.io/test_vk_app/&scope=friends&response_type=token&v=5.52";
       }
 });
 </script>
