@@ -43,6 +43,7 @@
 
     <a id="vk_auth" class="btn" href="https://oauth.vk.com/authorize?client_id=7297420&display=page&redirect_uri=https://kotbegemot1.github.io/test_vk_app/&scope=friends&response_type=token&v=5.52"> Авторизироваться</a>
     <button class="btn" id="load"> Загрузить список друзей</button>
+    <button class="btn" id="back"> Перейти к авторизации</button>
 
     <ul></ul>
 
@@ -112,6 +113,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
               $('ul').html(html);
             }
+        $('#back').on('click', backToAuth);
+        function backToAuth() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('id');
+            document.location.href = "https://kotbegemot1.github.io/test_vk_app/";
+        }
+
       } else {
         $('#load').hide();
         $('h2').html('Пожалуйста авторизируйтесь!')
