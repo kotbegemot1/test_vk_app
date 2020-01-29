@@ -51,8 +51,6 @@
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function(){
 
-      const i = document.URL;
-
       if (localStorage.getItem('token')) {
         $('#vk_auth').hide()
 	if (localStorage.getItem('token') == '1') {      
@@ -67,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function(){
               method: 'GET',
               dataType: 'JSONP',
               success: function (data) {
-		console.log(data);
                 showUserInfo(data.response);
               }
 
@@ -115,12 +112,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
               $('ul').html(html);
             }
-
-        console.log('in') ;
       } else {
         $('#load').hide();
         $('h2').html('Пожалуйста авторизируйтесь!')
-        console.log('notin');
 	localStorage.setItem('token', '1');
       }
 });
